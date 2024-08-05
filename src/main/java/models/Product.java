@@ -5,6 +5,7 @@ public class Product {
     private Long id;
     private String name;
     private Long price;
+    
     //Constructors
     public Product(Long id, String name, Long price) {
         this.id = id;
@@ -14,7 +15,7 @@ public class Product {
 
     public Product() {
     }
-    
+
     //Setters and Getters
     public Long getId() {
         return id;
