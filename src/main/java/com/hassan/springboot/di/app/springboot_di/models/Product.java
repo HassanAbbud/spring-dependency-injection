@@ -1,4 +1,4 @@
-package models;
+package com.hassan.springboot.di.app.springboot_di.models;
 
 public class Product {
     
@@ -32,7 +32,7 @@ public class Product {
     public Long getPrice() {
         return price;
     }
-    public void setPrice(Long price) {
-        this.price = price;
+    public void setPrice(Long d) {
+        this.price = d;
     }
 }
