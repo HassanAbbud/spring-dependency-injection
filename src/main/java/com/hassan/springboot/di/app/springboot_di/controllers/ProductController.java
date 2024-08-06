@@ -8,6 +8,7 @@ import com.hassan.springboot.di.app.springboot_di.services.ProductService;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -17,11 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductService productService;
-    
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+    @Autowired
+    private ProductService productService;
 
     @GetMapping()
     public List<Product> productsList() {
@@ -32,6 +30,5 @@ public class ProductController {
     public Product geProductById(@PathVariable Long id) {
         return this.productService.findById(id);
     }
-    
     
 }
