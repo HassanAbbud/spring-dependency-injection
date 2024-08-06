@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hassan.springboot.di.app.springboot_di.models.Product;
-import com.hassan.springboot.di.app.springboot_di.services.ProductServiceImpl;
+import com.hassan.springboot.di.app.springboot_di.services.ProductService;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductServiceImpl productService;
+    private final ProductService productService;
     
-    public ProductController(ProductServiceImpl productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
