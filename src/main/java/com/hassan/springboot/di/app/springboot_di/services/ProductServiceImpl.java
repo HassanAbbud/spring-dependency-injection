@@ -3,6 +3,7 @@ package com.hassan.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.hassan.springboot.di.app.springboot_di.models.Product;
@@ -13,7 +14,7 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository repository;
 
-    public ProductServiceImpl(ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
         this.repository = repository;
     }
 
