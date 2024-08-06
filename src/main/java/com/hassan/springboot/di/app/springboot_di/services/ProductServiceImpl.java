@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository repository;
 
-    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -22,9 +22,11 @@ public class ProductServiceImpl implements ProductService{
         return repository.findAll().stream().map(p -> {
             Double taxedPrice = p.getPrice() * 1.16d;
             // Product newProduct = new Product(p.getId(), p.getName(), newPrice.longValue());
-            Product newProduct = (Product) p.clone();
-            newProduct.setPrice(taxedPrice.longValue());
-            return newProduct;
+            //Product newProduct = (Product) p.clone();
+            // newProduct.setPrice(taxedPrice.longValue());
+            // return newProduct;
+            p.setPrice(taxedPrice.longValue());
+            return p;
         }).collect(Collectors.toList());
     }
 
