@@ -3,7 +3,6 @@ package com.hassan.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hassan.springboot.di.app.springboot_di.models.Product;
@@ -12,9 +11,12 @@ import com.hassan.springboot.di.app.springboot_di.repositories.ProductRepository
 @Service
 public class ProductServiceImpl implements ProductService{
 
-    @Autowired 
-    private ProductRepository repository;
-    
+    private final ProductRepository repository;
+
+    public ProductServiceImpl(ProductRepository repository) {
+        this.repository = repository;
+    }
+
     public List<Product> findAll(){
         return repository.findAll().stream().map(p -> {
             Double taxedPrice = p.getPrice() * 1.16d;
