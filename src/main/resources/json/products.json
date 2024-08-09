@@ -1,22 +1,22 @@
 [
     {
         "id": 1,
-        "name": "DellXPS",
+        "name": "Json product 1",
         "price": 2320
     },
     {
         "id": 2,
-        "name": "Asus Zephyrus",
+        "name": "Json product 2",
         "price": 2900
     },
     {
         "id": 3,
-        "name": "Alienware M17",
+        "name": "Json product 3",
         "price": 2668
     },
     {
         "id": 4,
-        "name": "Razer",
+        "name": "Json product 4",
         "price": 3711
     }
 ]

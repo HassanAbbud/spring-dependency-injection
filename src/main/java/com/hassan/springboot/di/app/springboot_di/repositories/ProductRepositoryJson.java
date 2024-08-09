@@ -5,32 +5,31 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hassan.springboot.di.app.springboot_di.models.Product;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class ProductRepositoryJson implements ProductRepository{
+public class ProductRepositoryJson implements ProductRepository {
+
     private List<Product> list;
-    
 
     public ProductRepositoryJson() {
-        ClassPathResource resource = new ClassPathResource("json/products.json");
+        Resource resource = new ClassPathResource("json/product.json");
+        readValueJson(resource);
+    }
+
+    public ProductRepositoryJson(Resource resource) {
+        readValueJson(resource);
+    }
+
+    private void readValueJson(Resource resource) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             list = Arrays.asList(objectMapper.readValue(resource.getFile(), Product[].class));
-        } catch (StreamReadException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (DatabindException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -40,8 +39,7 @@ public class ProductRepositoryJson implements ProductRepository{
 
     @Override
     public Product findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return list.stream().filter(p -> p.getId().equals(id)).findFirst().orElseThrow();
     }
-
+    
 }

@@ -12,11 +12,11 @@ import com.hassan.springboot.di.app.springboot_di.repositories.ProductRepository
 
 @Service
 public class ProductServiceImpl implements ProductService{
-
-    private final ProductRepository repository;
     //inject from AppConfig.Java
     @Value("${config.price.tax}")
     private Double tax;
+
+    private final ProductRepository repository;
 
     public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
         this.repository = repository;
@@ -39,5 +39,4 @@ public class ProductServiceImpl implements ProductService{
     public Product findById(Long id){
         return repository.findById(id);
     }
-
 }
